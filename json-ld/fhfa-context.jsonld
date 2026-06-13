@@ -1,0 +1,198 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "fhfa": "https://www.fhfa.gov/ns/",
+    "hpi": "https://www.fhfa.gov/data/hpi#",
+    "nmdb": "https://www.fhfa.gov/data/nmdb#",
+    "pudb": "https://www.fhfa.gov/data/pudb#",
+    "uad": "https://www.fhfa.gov/data/uad#",
+
+    "GovernmentOrganization": "GovernmentOrganization",
+    "DataCatalog": "DataCatalog",
+    "Dataset": "Dataset",
+    "DataDownload": "DataDownload",
+    "NewsArticle": "NewsArticle",
+
+    "name": "name",
+    "description": "description",
+    "url": "url",
+    "sameAs": "sameAs",
+    "identifier": "identifier",
+    "datePublished": "datePublished",
+    "dateModified": "dateModified",
+    "license": "license",
+    "creator": "creator",
+    "publisher": "publisher",
+    "keywords": "keywords",
+    "encodingFormat": "encodingFormat",
+    "contentUrl": "contentUrl",
+    "variableMeasured": "variableMeasured",
+    "spatialCoverage": "spatialCoverage",
+    "temporalCoverage": "temporalCoverage",
+    "measurementTechnique": "measurementTechnique",
+
+    "hpiType": {
+      "@id": "hpi:hpiType",
+      "@type": "xsd:string"
+    },
+    "hpiFlavor": {
+      "@id": "hpi:hpiFlavor",
+      "@type": "xsd:string"
+    },
+    "frequency": {
+      "@id": "hpi:frequency",
+      "@type": "xsd:string"
+    },
+    "level": {
+      "@id": "hpi:level",
+      "@type": "xsd:string"
+    },
+    "placeName": {
+      "@id": "hpi:placeName",
+      "@type": "xsd:string"
+    },
+    "placeId": {
+      "@id": "hpi:placeId",
+      "@type": "xsd:string"
+    },
+    "yr": {
+      "@id": "hpi:yr",
+      "@type": "xsd:integer"
+    },
+    "period": {
+      "@id": "hpi:period",
+      "@type": "xsd:integer"
+    },
+    "indexNsa": {
+      "@id": "hpi:indexNsa",
+      "@type": "xsd:decimal"
+    },
+    "indexSa": {
+      "@id": "hpi:indexSa",
+      "@type": "xsd:decimal"
+    },
+    "rstderr": {
+      "@id": "hpi:rstderr",
+      "@type": "xsd:decimal"
+    },
+    "conformingLoanLimit": {
+      "@id": "fhfa:conformingLoanLimit",
+      "@type": "xsd:integer"
+    },
+    "highCostAreaLimit": {
+      "@id": "fhfa:highCostAreaLimit",
+      "@type": "xsd:integer"
+    },
+    "countyFips": {
+      "@id": "fhfa:countyFips",
+      "@type": "xsd:string"
+    },
+    "gseType": {
+      "@id": "fhfa:gseType",
+      "@type": "xsd:string"
+    },
+    "appraisalValue": {
+      "@id": "uad:appraisalValue",
+      "@type": "xsd:decimal"
+    },
+    "loanToValue": {
+      "@id": "nmdb:loanToValue",
+      "@type": "xsd:decimal"
+    },
+    "mortgageType": {
+      "@id": "nmdb:mortgageType",
+      "@type": "xsd:string"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@type": "GovernmentOrganization",
+      "@id": "https://www.fhfa.gov",
+      "name": "Federal Housing Finance Agency (FHFA)",
+      "description": "Independent federal regulator supervising Fannie Mae, Freddie Mac, and the Federal Home Loan Bank System, established in 2008. Provides publicly accessible housing finance data and APIs.",
+      "url": "https://www.fhfa.gov",
+      "sameAs": [
+        "https://www.linkedin.com/company/fhfa",
+        "https://x.com/FHFA",
+        "https://github.com/fhfa"
+      ]
+    },
+    {
+      "@type": "DataCatalog",
+      "@id": "https://www.fhfa.gov/data/datasets",
+      "name": "FHFA Data Catalog",
+      "description": "Comprehensive catalog of FHFA housing finance datasets including HPI, NMDB, PUDB, conforming loan limits, and UAD statistics.",
+      "url": "https://www.fhfa.gov/data/datasets",
+      "publisher": {
+        "@id": "https://www.fhfa.gov"
+      },
+      "license": "https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service",
+      "dataset": [
+        {
+          "@type": "Dataset",
+          "@id": "https://www.fhfa.gov/data/hpi",
+          "name": "FHFA House Price Index (HPI)",
+          "description": "Comprehensive publicly available dataset measuring changes in single-family home values across all 50 states and over 400 cities, using weighted repeat-sales methodology based on tens of millions of home sales.",
+          "url": "https://www.fhfa.gov/data/hpi",
+          "keywords": ["house price index", "HPI", "housing", "single-family", "repeat-sales"],
+          "temporalCoverage": "1975/..",
+          "spatialCoverage": "United States",
+          "measurementTechnique": "Weighted repeat-sales methodology",
+          "variableMeasured": [
+            "House Price Index (non-seasonally adjusted)",
+            "House Price Index (seasonally adjusted)"
+          ],
+          "distribution": [
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "text/csv",
+              "contentUrl": "https://www.fhfa.gov/hpi/download/monthly/hpi_master.csv"
+            },
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "application/xml",
+              "contentUrl": "https://www.fhfa.gov/hpi/download/monthly/hpi_master.xml"
+            }
+          ]
+        },
+        {
+          "@type": "Dataset",
+          "@id": "https://www.fhfa.gov/data/nmdb",
+          "name": "National Mortgage Database (NMDB)",
+          "description": "Nationally representative longitudinal database of residential mortgages providing aggregate statistics on outstanding residential mortgages and mortgage originations.",
+          "url": "https://www.fhfa.gov/data/nmdb",
+          "keywords": ["mortgage", "NMDB", "residential", "originations", "loan characteristics"],
+          "spatialCoverage": "United States"
+        },
+        {
+          "@type": "Dataset",
+          "@id": "https://www.fhfa.gov/data/pudb",
+          "name": "Enterprise Public Use Database (PUDB)",
+          "description": "Loan-level data on single-family and multifamily mortgages acquired by Fannie Mae and Freddie Mac, and data on Federal Home Loan Bank member institutions.",
+          "url": "https://www.fhfa.gov/data/pudb",
+          "keywords": ["Fannie Mae", "Freddie Mac", "GSE", "mortgage", "loan-level", "PUDB"],
+          "spatialCoverage": "United States"
+        },
+        {
+          "@type": "Dataset",
+          "@id": "https://www.fhfa.gov/data/conforming-loan-limit",
+          "name": "Conforming Loan Limits",
+          "description": "Annual conforming loan limit (CLL) values establishing maximum mortgage amounts Fannie Mae and Freddie Mac may purchase, at the county level for all U.S. states and territories.",
+          "url": "https://www.fhfa.gov/data/conforming-loan-limit",
+          "keywords": ["conforming loan limit", "CLL", "Fannie Mae", "Freddie Mac", "county"],
+          "spatialCoverage": "United States"
+        },
+        {
+          "@type": "Dataset",
+          "@id": "https://www.fhfa.gov/data/uad",
+          "name": "Uniform Appraisal Dataset (UAD) Aggregate Statistics",
+          "description": "Data on residential appraisals submitted to Fannie Mae and Freddie Mac, covering appraisal values, property characteristics, and geographic distributions.",
+          "url": "https://www.fhfa.gov/data/uad",
+          "keywords": ["appraisal", "UAD", "uniform appraisal", "housing", "property valuation"],
+          "spatialCoverage": "United States"
+        }
+      ]
+    }
+  ]
+}
