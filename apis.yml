@@ -1,0 +1,173 @@
+aid: fhfa
+url: https://raw.githubusercontent.com/api-evangelist/fhfa/refs/heads/main/apis.yml
+name: Federal Housing Finance Agency (FHFA)
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Housing Finance
+  - House Price Index
+  - Mortgage
+  - Government
+  - GSE
+  - Fannie Mae
+  - Freddie Mac
+  - Federal
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+description: >-
+  The Federal Housing Finance Agency (FHFA) is an independent federal regulator
+  established in 2008 that supervises Fannie Mae, Freddie Mac, and the Federal
+  Home Loan Bank System. FHFA provides publicly accessible data APIs and
+  datasets covering house price indexes (FHFA HPI), mortgage market surveys,
+  conforming loan limits, National Mortgage Database (NMDB) aggregate statistics,
+  Public Use Databases (PUDB) for Fannie Mae and Freddie Mac, Uniform Appraisal
+  Dataset (UAD) statistics, and GSE performance and duty-to-serve data. Data is
+  available in CSV, JSON, XML, and Excel formats with open public access under
+  FHFA's API Terms of Service.
+apis:
+  - aid: fhfa:fhfa-house-price-index-api
+    name: FHFA House Price Index (HPI) API
+    tags:
+      - House Price Index
+      - Housing
+      - CSV
+      - JSON
+      - XML
+    humanURL: https://www.fhfa.gov/data/hpi
+    properties:
+      - url: https://www.fhfa.gov/data/hpi
+        type: Documentation
+      - url: https://www.fhfa.gov/data/hpi/datasets
+        type: Datasets
+      - url: https://www.fhfa.gov/hpi/download/monthly/hpi_master.csv
+        type: DataDownloadCSV
+      - url: https://www.fhfa.gov/hpi/download/monthly/hpi_master.xml
+        type: DataDownloadXML
+      - url: https://www.fhfa.gov/sites/default/files/2023-09/HPI_dictionary.xls
+        type: DataDictionary
+      - url: https://www.fhfa.gov/data/hpi/summary-tables
+        type: SummaryTables
+      - url: https://www.fhfa.gov/hpi-calculator
+        type: Calculator
+    description: >-
+      The FHFA House Price Index (HPI) is a comprehensive, publicly available
+      dataset measuring changes in single-family home values across all 50 states
+      and over 400 American cities, with data extending back to the mid-1970s.
+      The HPI uses a weighted repeat-sales methodology based on tens of millions
+      of home sales and is available in CSV, JSON, and XML formats at monthly and
+      quarterly intervals. Datasets include purchase-only indexes, all-transaction
+      indexes incorporating appraisal data, expanded-data indexes adding FHA and
+      county recorder data, and volatility parameters. Data is free and publicly
+      accessible with attribution required under FHFA API Terms of Service.
+  - aid: fhfa:fhfa-national-mortgage-database-api
+    name: FHFA National Mortgage Database (NMDB) API
+    tags:
+      - Mortgage
+      - National Mortgage Database
+      - Statistics
+      - CSV
+    humanURL: https://www.fhfa.gov/data/nmdb
+    properties:
+      - url: https://www.fhfa.gov/data/nmdb
+        type: Documentation
+      - url: https://www.fhfa.gov/data/nsmo
+        type: RelatedDataset
+      - url: https://www.fhfa.gov/data/dashboard/nmdb-outstanding-residential-mortgage-statistics
+        type: Dashboard
+    description: >-
+      The National Mortgage Database (NMDB) is a nationally representative,
+      longitudinal database of residential mortgages providing aggregate
+      statistics on outstanding residential mortgages and mortgage originations.
+      Data covers loan characteristics, borrower demographics, and geographic
+      distributions. NMDB aggregate statistics and National Survey of Mortgage
+      Originations (NSMO) data are downloadable as CSV files with interactive
+      Tableau dashboards for visualization.
+  - aid: fhfa:fhfa-public-use-database-api
+    name: FHFA Enterprise Public Use Database (PUDB) API
+    tags:
+      - Fannie Mae
+      - Freddie Mac
+      - GSE
+      - Mortgage
+      - Public Use Database
+      - CSV
+    humanURL: https://www.fhfa.gov/data/pudb
+    properties:
+      - url: https://www.fhfa.gov/data/pudb
+        type: Documentation
+      - url: https://www.fhfa.gov/data/public-use-database
+        type: Overview
+    description: >-
+      The FHFA Enterprise Public Use Database (PUDB) provides loan-level data
+      on single-family and multifamily mortgages acquired by Fannie Mae and
+      Freddie Mac, as well as data on Federal Home Loan Bank member institutions.
+      Files include National File A, B, and C for single-family mortgages and
+      property-level and unit-class-level files for multifamily. Data is
+      downloadable as zipped CSV files with accompanying data dictionaries.
+  - aid: fhfa:fhfa-conforming-loan-limits-api
+    name: FHFA Conforming Loan Limits API
+    tags:
+      - Conforming Loan Limits
+      - Fannie Mae
+      - Freddie Mac
+      - Mortgage
+      - CSV
+    humanURL: https://www.fhfa.gov/data/conforming-loan-limit
+    properties:
+      - url: https://www.fhfa.gov/data/conforming-loan-limit
+        type: Documentation
+    description: >-
+      FHFA publishes annual conforming loan limit (CLL) values establishing the
+      maximum mortgage amounts that Fannie Mae and Freddie Mac may purchase. Data
+      is available at the county level for all U.S. states and territories,
+      downloadable in XLSX, CSV, and PDF formats. Limits are adjusted annually
+      per the Housing and Economic Recovery Act (HERA) formula, with higher
+      limits for designated high-cost areas.
+  - aid: fhfa:fhfa-uad-aggregate-statistics-api
+    name: FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics API
+    tags:
+      - Appraisal
+      - UAD
+      - Housing
+      - Statistics
+    humanURL: https://www.fhfa.gov/data/uad
+    properties:
+      - url: https://www.fhfa.gov/data/uad
+        type: Documentation
+      - url: https://www.fhfa.gov/data/uad/puf
+        type: PublicUseFile
+      - url: https://www.fhfa.gov/data/dashboard
+        type: Dashboard
+    description: >-
+      The FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics provide
+      data on residential appraisals submitted to Fannie Mae and Freddie Mac,
+      covering appraisal values, property characteristics, and geographic
+      distributions. An Appraisal-Level Public Use File (PUF) with
+      anonymized individual appraisal records is also available for research.
+common:
+  - type: Website
+    url: https://www.fhfa.gov
+  - type: Documentation
+    url: https://www.fhfa.gov/data/developer-information
+  - type: TermsOfService
+    url: https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service
+  - type: Datasets
+    url: https://www.fhfa.gov/data/datasets
+  - type: Blog
+    url: https://www.fhfa.gov/news
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/fhfa
+  - type: X
+    url: https://x.com/FHFA
+  - type: GitHubOrg
+    url: https://github.com/fhfa
+  - type: Plans
+    url: plans/fhfa-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fhfa-rate-limits.yml
+  - type: FinOps
+    url: finops/fhfa-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

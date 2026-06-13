@@ -1,0 +1,113 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Federal Housing Finance Agency (FHFA)
+providerId: fhfa
+publisherName: Federal Housing Finance Agency (FHFA)
+serviceCategory: API
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - Housing Finance
+  - House Price Index
+  - Mortgage
+  - Government
+  - GSE
+  - Federal
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  FinOps framework definition for the FHFA API surface. FHFA is a federal
+  government agency that provides all data APIs and datasets at no cost to
+  consumers. Direct API usage costs are zero. FinOps considerations center
+  on internal engineering and infrastructure costs for building and
+  maintaining integrations with FHFA data pipelines, storage of downloaded
+  datasets, compute for processing large CSV/XML/JSON files, and operational
+  overhead of managing recurring data refresh cycles.
+principles:
+  - name: Visibility
+    description: >-
+      Track engineering time and infrastructure costs associated with consuming
+      FHFA data, even though the data itself is free. Include storage, compute,
+      and pipeline maintenance in cost visibility.
+  - name: Allocation
+    description: >-
+      Allocate costs of FHFA data integration by team, product feature, or
+      business unit consuming the housing finance data downstream.
+  - name: Optimization
+    description: >-
+      Since FHFA datasets are updated on monthly or quarterly schedules,
+      optimize by caching data locally and avoiding redundant downloads.
+      Use incremental processing where possible on large files.
+  - name: Accountability
+    description: >-
+      Establish ownership of FHFA data pipelines and budget for storage and
+      compute associated with processing large housing finance datasets.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Workload Optimization
+      - Rate Optimization
+costs:
+  - category: Direct API Cost
+    description: Zero — all FHFA data is publicly available at no charge.
+    unit: USD
+    price: '0.00'
+    notes: No API keys, subscriptions, or usage fees exist for FHFA public data.
+  - category: Data Storage
+    description: >-
+      Cost of storing downloaded HPI, NMDB, PUDB, and other FHFA dataset files.
+      The HPI master CSV file alone can be tens of megabytes; PUDB zipped files
+      can be hundreds of megabytes per annual release.
+    unit: USD per GB per month
+    price: variable
+    notes: Allocate based on total FHFA dataset storage footprint.
+  - category: Compute Processing
+    description: >-
+      CPU and memory costs for parsing and transforming large CSV/XML/JSON
+      FHFA dataset files into downstream analytics pipelines or databases.
+    unit: USD per compute-hour
+    price: variable
+    notes: Profile processing jobs for HPI and PUDB file ingestion to size correctly.
+  - category: Pipeline Maintenance
+    description: >-
+      Engineering labor and infrastructure to run recurring data refresh
+      jobs aligned with FHFA's monthly and quarterly publication schedules.
+    unit: USD per engineering-hour
+    price: variable
+    notes: Automate refresh pipelines to minimize ongoing manual intervention.
+optimization:
+  - name: Cache Downloaded Files
+    description: >-
+      FHFA datasets are updated on fixed monthly or quarterly schedules.
+      Cache downloaded files locally or in cloud storage and only fetch
+      new data when updates are published to avoid redundant large downloads.
+  - name: Monitor Publication Schedules
+    description: >-
+      Subscribe to FHFA news updates or monitor the FHFA data pages to
+      detect new dataset releases and trigger pipeline runs only when
+      new data is available.
+  - name: Incremental Processing
+    description: >-
+      Where possible, process only newly added records in HPI or PUDB files
+      rather than reprocessing full historical datasets on each refresh cycle.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

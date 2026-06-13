@@ -1,0 +1,59 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Federal Housing Finance Agency (FHFA)
+providerId: fhfa
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - Housing Finance
+  - House Price Index
+  - Mortgage
+  - Government
+  - GSE
+  - Federal
+description: >-
+  FHFA provides all public data APIs and datasets free of charge as a federal
+  government agency. No registration, API key, or subscription is required for
+  accessing publicly available datasets. Usage is governed by the FHFA API
+  Terms of Service, which requires attribution on any application consuming
+  FHFA data. There are no paid tiers; all data is open and publicly accessible.
+plans:
+  - id: fhfa-public
+    name: Public Access
+    type: free
+    description: >-
+      All FHFA data APIs and datasets are freely available to the public with
+      no registration, API key, or subscription required. This includes the
+      House Price Index, National Mortgage Database, Public Use Databases,
+      Conforming Loan Limits, UAD statistics, and all other published datasets.
+      Attribution is required per the FHFA API Terms of Service.
+    entries:
+      - label: API Requests
+        description: Unrestricted access to public data downloads and API endpoints
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: 0
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: FHFA House Price Index (HPI) API
+      - name: FHFA National Mortgage Database (NMDB) API
+      - name: FHFA Enterprise Public Use Database (PUDB) API
+      - name: FHFA Conforming Loan Limits API
+      - name: FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics API
+      - name: CSV Data Downloads
+      - name: JSON Data Downloads
+      - name: XML Data Downloads
+      - name: Interactive Dashboards
+      - name: HPI Calculator
+      - name: Data Dictionaries
+      - name: Technical Documentation
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

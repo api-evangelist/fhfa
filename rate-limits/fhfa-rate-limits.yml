@@ -1,0 +1,73 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Federal Housing Finance Agency (FHFA)
+providerId: fhfa
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - Housing Finance
+  - House Price Index
+  - Mortgage
+  - Government
+  - GSE
+  - Federal
+  - Rate Limiting
+  - Quotas
+description: >-
+  FHFA does not publish formal rate limits for its public data API endpoints
+  and dataset downloads. As a federal government agency, FHFA data is freely
+  accessible to the public. Standard web server infrastructure limits apply,
+  and the agency reserves the right to modify, limit, or terminate access
+  at any time per the API Terms of Service. Consumers should implement
+  reasonable request pacing and caching to avoid placing undue load on
+  FHFA servers.
+headers:
+  limit: ''
+  remaining: ''
+  reset: ''
+  retryAfter: Retry-After
+  policy: ''
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: public
+    name: Public Access Default
+    scope: ip-address
+    metric: requests_per_minute
+    limit: 60
+    burst: 120
+    timeFrame: minute
+    applies:
+      - FHFA House Price Index (HPI) API
+      - FHFA National Mortgage Database (NMDB) API
+      - FHFA Enterprise Public Use Database (PUDB) API
+      - FHFA Conforming Loan Limits API
+      - FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics API
+    notes: >-
+      No officially published rate limits exist. The value above is a
+      conservative estimate for responsible usage. FHFA reserves the right
+      to throttle or block access per its Terms of Service.
+policies:
+  - name: Attribution Required
+    description: >-
+      All applications and services using FHFA data must display the notice:
+      "This product uses FHFA Data but is neither endorsed nor certified by FHFA."
+  - name: Responsible Use
+    description: >-
+      Consumers should cache responses locally where feasible, since FHFA
+      datasets are updated on monthly or quarterly schedules rather than
+      in real time. Avoid repeatedly downloading large files unnecessarily.
+  - name: Backoff Strategy
+    description: >-
+      Clients receiving 429 or 503 responses should implement exponential
+      backoff with jitter and honor any Retry-After header returned.
+  - name: Content Integrity
+    description: >-
+      Users must not falsely represent or modify FHFA data content while
+      attributing it to FHFA as the source.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
