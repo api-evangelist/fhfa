@@ -1,81 +1,14 @@
 {
-  "meta": {
-    "provider": "Federal Housing Finance Agency (FHFA)",
-    "url": "https://www.fhfa.gov/news/news-release",
-    "pulled": "2026-06-13"
-  },
-  "blogs": [
-    {
-      "title": "U.S. House Prices Rise 1.7 Percent Year over Year; Up 0.5 percent Quarter over Quarter",
-      "url": "https://www.fhfa.gov/news/news-release/u.s.-house-prices-rise-1.7-percent-year-over-year-up-0.5-percent-quarter-over-quarter",
-      "published": "2026-05-26",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "FHFA House Price Index Unchanged in February; Up 1.7 Percent from Last Year",
-      "url": "https://www.fhfa.gov/news/news-release/fhfa-house-price-index-unchanged-in-february-up-1.7-percent-from-last-year",
-      "published": "2026-04-28",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "Homebuying Advances into New Era of Credit Score Competition",
-      "url": "https://www.fhfa.gov/news/news-release/homebuying-advances-into-new-era-of-credit-score-competition",
-      "published": "2026-04-22",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "FHFA House Price Index Up 0.1 Percent in January; Up 1.6 Percent from Last Year",
-      "url": "https://www.fhfa.gov/news/news-release/fhfa-house-price-index-up-0.1-percent-in-january-up-1.6-percent-from-last-year",
-      "published": "2026-03-31",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "Fannie Mae and Freddie Mac Remove Certain Homeowners Insurance Requirements That Will Reduce Costs",
-      "url": "https://www.fhfa.gov/news/news-release/fannie-mae-and-freddie-mac-remove-certain-homeowners-insurance-requirements-that-will-reduce-costs",
-      "published": "2026-03-18",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "U.S. House Prices Rise 1.8 Percent Year over Year; Up 0.8 percent Quarter over Quarter",
-      "url": "https://www.fhfa.gov/news/news-release/u.s.-house-prices-rise-1.8-percent-year-over-year-up-0.8-percent-quarter-over-quarter",
-      "published": "2026-02-24",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "FHFA House Price Index Up 0.6 Percent in November; Up 1.9 Percent from Last Year",
-      "url": "https://www.fhfa.gov/news/news-release/fhfa-house-price-indexr-up-0.6-percent-in-november-up-1.9-percent-from-last-year",
-      "published": "2026-01-27",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "U.S. Federal Housing Receives 'Best Result' from Annual GAO Audit, Publishes Accountability Report Documenting Agency Achievements",
-      "url": "https://www.fhfa.gov/news/news-release/u.s.-federal-housing-receives-best-result-from-annual-gao-audit",
-      "published": "2026-01-23",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "FHFA House Price Index Up 0.4 Percent in October; Up 1.7 Percent from Last Year",
-      "url": "https://www.fhfa.gov/news/news-release/fhfa-house-price-index-up-0.4-percent-in-october-up-1.7-percent-from-last-year",
-      "published": "2025-12-30",
-      "source": "FHFA News Releases"
-    },
-    {
-      "title": "Fannie and Freddie Empowered to Support Middle Class Homeownership",
-      "url": "https://www.fhfa.gov/news/news-release/fannie-and-freddie-empowered-to-support-middle-class-homeownership",
-      "published": "2025-12-15",
-      "source": "FHFA News Releases"
-    }
-  ],
   "repo": "fhfa",
   "feeds": [
     {
-      "source": "https://www.fhfa.gov/data/datasets",
-      "feed_url": "https://www.fhfa.gov/data/datasets",
-      "title": "",
+      "source": "https://www.fhfa.gov/news",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:41:01Z",
+  "agent_pulled": "2026-06-27"
 }
