@@ -146,6 +146,8 @@ apis:
       distributions. An Appraisal-Level Public Use File (PUF) with
       anonymized individual appraisal records is also available for research.
 common:
+  - type: DomainSecurity
+    url: security/fhfa-domain-security.yml
   - type: Website
     url: https://www.fhfa.gov
   - type: Documentation
