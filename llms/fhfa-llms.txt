@@ -1,0 +1,87 @@
+# Federal Housing Finance Agency (FHFA)
+
+> The Federal Housing Finance Agency is an independent US federal agency created by the Housing and Economic Recovery Act of 2008. It supervises and regulates Fannie Mae, Freddie Mac and the eleven Federal Home Loan Banks, and it publishes the FHFA House Price Index and a set of mortgage-market datasets as public US government works, free of charge and without registration.
+
+<!--
+generated: 2026-09-09
+method: generated
+source: apis.yml plus artifacts in this repository; FHFA serves no /llms.txt of its own
+        (https://www.fhfa.gov/llms.txt returned 404 on 2026-09-09)
+-->
+
+## What an agent can actually call
+
+FHFA publishes **no API contract** — no OpenAPI, no GraphQL SDL, no AsyncAPI, no WSDL, no
+Protobuf, no MCP server, no A2A agent card. What it publishes is a read-only bulk file
+surface over anonymous HTTPS GET. There is no key, no account, no query parameter and no
+pagination: you fetch whole documents and filter client-side.
+
+- [FHFA data catalog (Project Open Data v1.1 / DCAT-US, JSON-LD)](https://www.fhfa.gov/data/data.json): Machine-readable catalog of 39 FHFA datasets. Declares `conformsTo: https://project-open-data.cio.gov/v1.1/schema`. 80 KB, cacheable, `last-modified` present. Every one of its 50 distributions resolves to a file (csv/xls/STATA) — none declares an API endpoint.
+- [House Price Index master series (JSON)](https://www.fhfa.gov/hpi/download/monthly/hpi_master.json): 186,011 observations, 1975 through 2026, across 472 places and 16 index variants. ~60 MB, `application/json`, served whole. This is the single richest machine-readable thing FHFA publishes.
+- [House Price Index datasets index](https://www.fhfa.gov/data/hpi/datasets): The CSV/XLSX/TXT downloads — national, state, metro, county, three-digit ZIP, five-digit ZIP and census tract, annual, quarterly and monthly.
+
+## Record shape
+
+Each record in `hpi_master.json` carries: `hpi_type` (traditional | distress-free |
+developmental | manufactured | non-metro), `hpi_flavor` (all-transactions | expanded-data |
+purchase-only), `frequency` (monthly | quarterly), `level` (USA or Census Division | State |
+MSA | Puerto Rico), `place_name`, `place_id`, `yr` (1975–2026), `period` (1–12 for months,
+1–4 for quarters), `index_nsa` (always present), `index_sa` (null on 89,897 records),
+`rstderr` (null on 127,791 records) and `note` (a suppression / small-sample note, empty
+when there is nothing to report).
+
+A series is only unique on `hpi_type + hpi_flavor + frequency + level + place_id`; on
+`place_id` alone you will silently mix index variants.
+
+## Documentation and policy
+
+- [FHFA Data](https://www.fhfa.gov/data): Entry point for every FHFA data program.
+- [Downloadable datasets](https://www.fhfa.gov/data/datasets): The full dataset list.
+- [FHFA House Price Index](https://www.fhfa.gov/data/hpi): Methodology, latest report, and the forward release calendar.
+- [API Terms of Service](https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service): Governs access and use. Written conditionally — FHFA "may offer some of its public data in machine readable format via an Application Programming Interface" — and names no endpoint, no documentation, no authentication and no published limit.
+- [Vulnerability disclosure policy](https://www.fhfa.gov/vulnerability-disclosure-policy): Intake via Bugcrowd at https://bugcrowd.com/fhfa-vdp, questions to domainsecurity@fhfa.gov. Safe harbor, acknowledgement within 5 business days, 90-day disclosure embargo. No bug bounty.
+- [Privacy](https://www.fhfa.gov/about/privacy)
+- [FHFA Blog](https://www.fhfa.gov/blog)
+- [Data and research contact](https://www.fhfa.gov/contact/data-and-research)
+
+## Required attribution
+
+FHFA's API Terms of Service requires any product built on this data to prominently display:
+
+> This product uses FHFA Data but is neither endorsed nor certified by FHFA.
+
+You may credit the source as "Source: FHFA®". You may not use FHFA's name, logo or trademarks
+to endorse a product or service, you may not modify the content and still claim FHFA as the
+source, and you may not falsely represent content obtained from FHFA.
+
+## Release cadence
+
+The House Price Index is released on the last Tuesday of most months; February, May, August
+and November carry a quarterly index with monthly tables instead. FHFA publishes named
+release dates more than a year ahead at https://www.fhfa.gov/data/hpi#ReleaseDates. The next
+releases are 2026-09-29 (monthly, data through July 2026), 2026-10-27 (monthly, through
+August 2026), 2026-11-24 (quarterly, through 2026Q3) and 2026-12-29 (monthly, through
+October 2026).
+
+## Things an agent should know before integrating
+
+- **No credential, no signup.** Both endpoints above return 200 to a fully anonymous request.
+- **No rate limit is published and none is signalled.** No `X-RateLimit-*`, `RateLimit-*` or `Retry-After` header appears on any response. The ToS reserves a right to limit without naming a figure. Be a good citizen; the constraint here is document size, not request count.
+- **No cheap freshness check on the HPI document.** `hpi_master.json` is served `cache-control: must-revalidate, no-cache, private` with no `ETag` and no `Last-Modified`, so a conditional request is not possible — polling means re-downloading 60 MB. Use the published release calendar instead of polling.
+- **`Range` requests work.** The origin returns `accept-ranges: bytes` and answered a byte-range request with 206.
+- **The catalog is staler than the data.** `/data/data.json` last changed 2025-03-11 while the datasets it describes are still on the calendar above.
+- **Errors are HTML.** Unknown paths return a themed ~75 KB Drupal 404 page, not `application/problem+json`. Check the content type, not just the status.
+- **Nothing here is writable.** There is no create, update or delete operation anywhere on this surface, so idempotency and reversibility do not apply.
+
+## Related first-party artifacts in this profile
+
+- json-ld/federal-housing-finance-agency-data-catalog.json — the Project Open Data catalog, saved verbatim
+- json-schema/federal-housing-finance-agency-hpi-master.json — record schema derived from all 186,011 live records
+- examples/federal-housing-finance-agency-hpi-master-examples.json — real records, one per index variant
+- data-model/federal-housing-finance-agency-data-model.yml — entity graph
+- conventions/federal-housing-finance-agency-conventions.yml — runtime semantics
+- lifecycle/federal-housing-finance-agency-lifecycle.yml — release calendar, versioning, SLA posture
+- conformance/federal-housing-finance-agency-conformance.yml — standards asserted and denied
+- security/federal-housing-finance-agency-vulnerability-disclosure.yml — the VDP
+- rate-limits/federal-housing-finance-agency-rate-limits.yml — measured absence of limits
+- plans/federal-housing-finance-agency-plans-pricing.yml — free public data, no tiers

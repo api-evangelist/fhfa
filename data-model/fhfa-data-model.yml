@@ -1,0 +1,104 @@
+generated: '2026-09-09'
+method: derived
+source: >-
+  json-schema/federal-housing-finance-agency-hpi-master.json and
+  json-ld/federal-housing-finance-agency-data-catalog.json
+provider: Federal Housing Finance Agency
+providerId: federal-housing-finance-agency
+description: >-
+  Entity model of the FHFA public data surface, derived from two documents FHFA actually
+  serves: the Project Open Data v1.1 catalog at /data/data.json and the House Price Index
+  master series at /hpi/download/monthly/hpi_master.json. There is no OpenAPI to walk $refs
+  in, so relationships below were computed from the field-level identifier structure observed
+  in the live documents, not from a declared schema.
+entities:
+  - name: Catalog
+    source: https://www.fhfa.gov/data/data.json
+    type: dcat:Catalog
+    description: The agency-level Project Open Data catalog document.
+    fields:
+      - {name: conformsTo, type: string, note: 'https://project-open-data.cio.gov/v1.1/schema'}
+      - {name: describedBy, type: string}
+      - {name: '@context', type: string, note: JSON-LD context (catalog.jsonld)}
+      - {name: '@type', type: string, note: dcat:Catalog}
+      - {name: dataset, type: array, note: 39 entries observed}
+    relationships:
+      - {kind: has_many, target: Dataset, via: dataset}
+  - name: Dataset
+    source: https://www.fhfa.gov/data/data.json#/dataset
+    type: dcat:Dataset
+    description: >-
+      One published FHFA data asset. 39 observed, spanning the House Price Index, Federal Home
+      Loan Bank membership, Duty to Serve, Enterprise Housing Goals, Fair Lending, Borrower
+      Assistance and the annual reports to Congress.
+    fields:
+      - {name: title, type: string}
+      - {name: description, type: string}
+      - {name: identifier, type: string}
+      - {name: publisher, type: object, note: 'org:Organization — Federal Housing Finance Agency'}
+      - {name: distribution, type: array}
+    relationships:
+      - {kind: belongs_to, target: Catalog, via: dataset}
+      - {kind: has_many, target: Distribution, via: distribution}
+      - {kind: has_one, target: Publisher, via: publisher}
+  - name: Distribution
+    source: https://www.fhfa.gov/data/data.json#/dataset/distribution
+    type: dcat:Distribution
+    description: >-
+      A downloadable representation of a dataset. 50 observed across the 39 datasets. Formats
+      present are csv, xls and STATA; mediaType is populated on only 7 of 50 (text/csv on 6,
+      an Office spreadsheet type on 1) and absent on the other 43. NOT ONE distribution
+      declares an API or a service endpoint — every one resolves to a file.
+    fields:
+      - {name: accessURL, type: string}
+      - {name: downloadURL, type: string}
+      - {name: format, type: string, note: 'observed: xls, csv, STATA'}
+      - {name: mediaType, type: string, note: populated on 7 of 50}
+    relationships:
+      - {kind: belongs_to, target: Dataset, via: distribution}
+  - name: Publisher
+    type: 'org:Organization'
+    description: Federal Housing Finance Agency, self-referential subOrganizationOf itself on every entry.
+  - name: HPIObservation
+    source: https://www.fhfa.gov/hpi/download/monthly/hpi_master.json
+    description: >-
+      One House Price Index value for one place, one period and one index variant. 186,011
+      records observed in the live document.
+    fields:
+      - {name: hpi_type, type: string, note: '5 values: traditional, distress-free, developmental, manufactured, non-metro'}
+      - {name: hpi_flavor, type: string, note: '3 values: all-transactions, expanded-data, purchase-only'}
+      - {name: frequency, type: string, note: 'monthly | quarterly'}
+      - {name: level, type: string, note: 'USA or Census Division | State | MSA | Puerto Rico'}
+      - {name: place_id, type: string, note: 472 distinct identifiers observed}
+      - {name: place_name, type: string}
+      - {name: yr, type: integer, note: 1975-2026}
+      - {name: period, type: integer, note: 1-12 (month) or 1-4 (quarter)}
+      - {name: index_nsa, type: number, note: always present}
+      - {name: index_sa, type: number|null, note: null on 89,897 of 186,011}
+      - {name: rstderr, type: number|null, note: null on 127,791 of 186,011}
+      - {name: note, type: string, note: suppression / small-sample note, empty when none}
+    relationships:
+      - {kind: belongs_to, target: Place, via: place_id}
+      - {kind: belongs_to, target: Series, via: 'hpi_type + hpi_flavor + frequency + level'}
+  - name: Place
+    description: >-
+      Geography an observation covers, identified by place_id. Derived — FHFA publishes no
+      standalone place registry; the 472 identifiers are the distinct values observed in
+      hpi_master.json. Identifiers are heterogeneous by level (e.g. DV_ENC for a census
+      division, two-letter codes for states, CBSA codes for metros).
+    natural_key: place_id
+  - name: Series
+    description: >-
+      The composite key that makes an index series unique. 16 distinct
+      (hpi_type, hpi_flavor, frequency, level) combinations observed. Derived — FHFA does not
+      name this entity, but no observation is addressable without all four values plus place
+      and period.
+    natural_key: hpi_type + hpi_flavor + frequency + level + place_id
+identifier_conventions:
+  - >-
+    There are no opaque or prefixed object identifiers anywhere in this surface. Every key is
+    a natural key made of domain values.
+  - >-
+    A consumer joining FHFA HPI to other datasets must map place_id themselves; FHFA publishes
+    no crosswalk to FIPS, CBSA or ZIP within these documents.
+render: null

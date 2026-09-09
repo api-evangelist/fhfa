@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/federal-housing-finance-agency/main/json-schema/federal-housing-finance-agency-hpi-master.json",
+  "title": "FHFA House Price Index — hpi_master record",
+  "description": "Record shape of the FHFA House Price Index master dataset served as application/json at https://www.fhfa.gov/hpi/download/monthly/hpi_master.json. DERIVED by profiling all 186,011 records in the live document fetched 2026-09-09 (HTTP 200, application/json, 60,272,522 bytes). Enumerations below are the complete observed value sets for those records; FHFA publishes no schema of its own, so this describes what the endpoint actually served, not a contract FHFA has committed to.",
+  "x-provenance": {
+    "generated": "2026-09-09",
+    "method": "derived",
+    "source": "https://www.fhfa.gov/hpi/download/monthly/hpi_master.json",
+    "http_status": 200,
+    "content_type": "application/json",
+    "records_profiled": 186011,
+    "note": "Field types, nullability and enumerations computed over every record in the fetched document. No value was invented."
+  },
+  "type": "array",
+  "items": {
+    "type": "object",
+    "title": "HPI observation",
+    "additionalProperties": false,
+    "required": ["hpi_type", "hpi_flavor", "frequency", "level", "place_name", "place_id", "yr", "period", "index_nsa", "index_sa", "rstderr", "note"],
+    "properties": {
+      "hpi_type": {
+        "type": "string",
+        "description": "Index construction type.",
+        "enum": ["traditional", "distress-free", "developmental", "manufactured", "non-metro"]
+      },
+      "hpi_flavor": {
+        "type": "string",
+        "description": "Transaction set the index is built from.",
+        "enum": ["all-transactions", "expanded-data", "purchase-only"]
+      },
+      "frequency": {
+        "type": "string",
+        "description": "Publication frequency of the series.",
+        "enum": ["monthly", "quarterly"]
+      },
+      "level": {
+        "type": "string",
+        "description": "Geographic level of the observation.",
+        "enum": ["USA or Census Division", "State", "MSA", "Puerto Rico"]
+      },
+      "place_name": {
+        "type": "string",
+        "description": "Human-readable name of the place the observation covers (e.g. 'East North Central Division'). 472 distinct place identifiers observed."
+      },
+      "place_id": {
+        "type": "string",
+        "description": "FHFA place identifier (e.g. 'DV_ENC' for a census division, a two-letter state code, or a CBSA code)."
+      },
+      "yr": {
+        "type": "integer",
+        "description": "Calendar year of the observation.",
+        "minimum": 1975,
+        "maximum": 2026
+      },
+      "period": {
+        "type": "integer",
+        "description": "Period within the year — month 1-12 for monthly series, quarter 1-4 for quarterly series.",
+        "minimum": 1,
+        "maximum": 12
+      },
+      "index_nsa": {
+        "type": "number",
+        "description": "Index value, not seasonally adjusted. Present on every observed record."
+      },
+      "index_sa": {
+        "type": ["number", "null"],
+        "description": "Index value, seasonally adjusted. Null on 89,897 of 186,011 observed records — seasonally adjusted values are not published for every series."
+      },
+      "rstderr": {
+        "type": ["number", "null"],
+        "description": "Standard error of the index estimate. Null on 127,791 of 186,011 observed records."
+      },
+      "note": {
+        "type": "string",
+        "description": "Suppression / sample-size note. Empty string when there is nothing to report. Observed non-empty values: 'Note: Fewer than 1,000 repeat-sales records have accumulated up to this quarter' and 'Note: Index value suppressed due to too few repeat-sales records in the sample for this quarter'."
+      }
+    }
+  }
+}

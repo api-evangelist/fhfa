@@ -1,0 +1,111 @@
+generated: '2026-09-09'
+method: searched
+source: https://www.fhfa.gov/data/hpi
+provider: Federal Housing Finance Agency
+providerId: federal-housing-finance-agency
+description: >-
+  Lifecycle posture for the FHFA public data surface. FHFA publishes no API versioning policy,
+  no deprecation policy, no Sunset/Deprecation header practice, no SLA and no status page.
+  What it DOES publish — and publishes well — is a firm forward release calendar for the House
+  Price Index, which is the closest thing this surface has to a change contract.
+versioning:
+  policy_published: false
+  scheme: none
+  detail: >-
+    No version in path, header or media type. Data URLs are stable and are overwritten in
+    place on each publication cycle.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  detail: >-
+    No deprecation policy page was found on fhfa.gov and no RFC 8594 Sunset or Deprecation
+    header was observed on any response. NO Deprecation pointer is wired from this file.
+  evidence:
+    - url: https://www.fhfa.gov/hpi/download/monthly/hpi_master.json
+      status: 200
+      note: response headers carry no Sunset, Deprecation or Link rel=deprecation
+sla:
+  published: false
+  detail: >-
+    FHFA's API Terms of Service explicitly disclaims availability — the API is provided "AS IS"
+    and "AS AVAILABLE", and FHFA "makes no representation nor warranty that the API will be
+    error free or that access thereto will be continuous, uninterrupted, or not terminated."
+  evidence:
+    - url: https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service
+      status: 200
+status_page:
+  published: false
+  detail: >-
+    No status.fhfa.gov, no statuspage.io tenant and no uptime/incident page found. NO
+    StatusPage pointer is wired from this file.
+release_calendar:
+  published: true
+  url: https://www.fhfa.gov/data/hpi#ReleaseDates
+  status: 200
+  contact: HPIQuestions@fhfa.gov
+  cadence: >-
+    Monthly index on the last Tuesday of most months; a quarterly index (with monthly tables)
+    replaces the monthly release in February, May, August and November.
+  detail: >-
+    FHFA publishes named release dates more than a year ahead. Transcribed verbatim from the
+    HPI page on 2026-09-09.
+  upcoming:
+    - date: '2026-09-29'
+      release_type: Monthly Index
+      last_included_data: July 2026
+    - date: '2026-10-27'
+      release_type: Monthly Index
+      last_included_data: August 2026
+    - date: '2026-11-24'
+      release_type: Quarterly Index (with Monthly Tables)
+      last_included_data: September 2026 and 2026Q3
+    - date: '2026-12-29'
+      release_type: Monthly Index
+      last_included_data: October 2026
+    - date: '2027-01-26'
+      release_type: Monthly Index
+      last_included_data: November 2026
+    - date: '2027-02-23'
+      release_type: Quarterly Index (with Monthly Tables)
+      last_included_data: December 2026 and 2026Q4
+    - date: '2027-03-30'
+      release_type: Monthly Index
+      last_included_data: January 2027
+    - date: '2027-04-27'
+      release_type: Monthly Index
+      last_included_data: February 2027
+    - date: '2027-05-25'
+      release_type: Quarterly Index (with Monthly Tables)
+      last_included_data: March 2027 and 2027Q1
+    - date: '2027-06-29'
+      release_type: Monthly Index
+      last_included_data: April 2027
+    - date: '2027-07-27'
+      release_type: Monthly Index
+      last_included_data: May 2027
+    - date: '2027-08-31'
+      release_type: Quarterly Index (with Monthly Tables)
+      last_included_data: June 2027 and 2027Q2
+    - date: '2027-09-28'
+      release_type: Monthly Index
+      last_included_data: July 2027
+    - date: '2027-10-26'
+      release_type: Monthly Index
+      last_included_data: August 2027
+    - date: '2027-11-30'
+      release_type: Quarterly Index (with Monthly Tables)
+      last_included_data: September 2027 and 2027Q3
+    - date: '2027-12-28'
+      release_type: Monthly Index
+      last_included_data: October 2027
+data_currency:
+  observed: >-
+    hpi_master.json fetched 2026-09-09 carries observations from 1975 through 2026 across 472
+    place identifiers and 16 type/flavor/frequency/level combinations.
+  catalog_last_modified: '2025-03-11'
+  catalog_note: >-
+    /data/data.json returns last-modified Tue, 11 Mar 2025 — the Project Open Data catalog has
+    not been regenerated in roughly 18 months even though the datasets it describes are still
+    being republished on the calendar above. The catalog is the stale surface, not the data.
+deprecated_operations: []

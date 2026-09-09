@@ -1,0 +1,73 @@
+generated: '2026-09-09'
+method: searched
+source: https://www.fhfa.gov/data/data.json
+provider: Federal Housing Finance Agency
+providerId: federal-housing-finance-agency
+description: >-
+  Standards this provider's own published artifacts declare or demonstrably implement.
+  Every entry cites the exact document location that carries the evidence. FHFA publishes no
+  OpenAPI, AsyncAPI, GraphQL SDL, WSDL or Protobuf, so there is no API contract to assert
+  API-shaped conformance against; what it does publish is a federal open-data catalog, and
+  that catalog declares its own standard in-band.
+conformance:
+  - id: project-open-data-1.1
+    name: Project Open Data Metadata Schema v1.1 (DCAT-US)
+    conforms: true
+    evidence: >-
+      https://www.fhfa.gov/data/data.json declares "conformsTo":
+      "https://project-open-data.cio.gov/v1.1/schema" and
+      "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json" in the
+      document body. Fetched 2026-09-09, HTTP 200, application/json, 80,417 bytes,
+      39 dataset entries.
+    domain_standard: true
+    market: US federal open data / government data cataloging
+    note: >-
+      This is the domain-standard signature for a US federal agency data publisher. It is the
+      OPEN DATA regime's catalog standard mandated under the OPEN Government Data Act, and an
+      integrator who already speaks DCAT-US can ingest the FHFA catalog with no bespoke
+      connector.
+  - id: dcat-jsonld
+    name: JSON-LD serialization of the catalog
+    conforms: true
+    evidence: >-
+      The same document carries "@context":
+      "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld" and
+      "@type": "dcat:Catalog", with each entry typed "dcat:Dataset". Saved verbatim to
+      json-ld/federal-housing-finance-agency-data-catalog.json.
+  - id: rfc9116-security-txt
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence: >-
+      https://www.fhfa.gov/.well-known/security.txt returned 404 on 2026-09-09. A
+      vulnerability disclosure policy IS published, but only as an HTML page — see
+      security/federal-housing-finance-agency-vulnerability-disclosure.yml.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      No OpenAPI document found. Probed /openapi.json, /openapi.yaml, /swagger.json,
+      /api-docs, /api, /api/v1, /jsonapi, /data/api on www.fhfa.gov — all 404 with a themed
+      Drupal HTML error page. No separate api.* host resolves in DNS.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: >-
+      No authorization server metadata served
+      (/.well-known/oauth-authorization-server → 404) and no authenticated surface exists;
+      the published data is fetched anonymously.
+  - id: rfc9457
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: >-
+      No API error surface exists to assert this against. Unknown paths return a themed HTML
+      404 page, not application/problem+json.
+notes:
+  - >-
+    FHFA's API Terms of Service (https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service,
+    HTTP 200) is written conditionally — "FHFA may offer some of its public data in machine
+    readable format via an Application Programming Interface" — and names no endpoint, no
+    documentation, no authentication and no published limit. It governs an API surface that is
+    not, as of this probe, documented anywhere on fhfa.gov.
+  - >-
+    No published certification or compliance program (SOC 2 / ISO 27001 / FedRAMP) was found
+    for FHFA's public data surface, so no Compliance pointer is wired from this file.

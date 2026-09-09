@@ -1,0 +1,113 @@
+generated: '2026-09-09'
+method: probed
+source: >-
+  live HTTP probes of https://www.fhfa.gov/data/data.json and
+  https://www.fhfa.gov/hpi/download/monthly/hpi_master.json, plus
+  https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service
+provider: Federal Housing Finance Agency
+providerId: federal-housing-finance-agency
+description: >-
+  Cross-cutting runtime semantics for the FHFA public data surface. This is a READ-ONLY bulk
+  data surface: FHFA serves whole JSON/CSV/XLSX documents over anonymous HTTPS GET. There is
+  no write surface, no query parameters, no pagination, no request identifiers and no
+  documented rate limit. Everything below was observed on the wire or read from FHFA's own
+  published policy; nothing is inferred from convention.
+surface:
+  style: bulk-file-download
+  interface_styles:
+    - http-file
+  transport: HTTPS GET
+  origin: Drupal 11 behind nginx (Acquia), observed via x-generator and x-acquia-* headers
+  representative_endpoints:
+    - url: https://www.fhfa.gov/data/data.json
+      status: 200
+      content_type: application/json
+      bytes: 80417
+      description: Project Open Data v1.1 catalog of 39 FHFA datasets
+    - url: https://www.fhfa.gov/hpi/download/monthly/hpi_master.json
+      status: 200
+      content_type: application/json
+      bytes: 60272522
+      description: House Price Index master series, 186,011 records
+authentication:
+  style: none
+  detail: >-
+    No credential of any kind is required or accepted. Both endpoints above returned 200 to an
+    entirely anonymous request. FHFA publishes no authentication documentation, no key
+    issuance flow and no OAuth metadata.
+pagination:
+  style: none
+  detail: >-
+    Documents are served whole. hpi_master.json returns all 186,011 records in a single 60 MB
+    response with no offset, cursor or limit parameter. The origin does honor HTTP Range
+    requests (accept-ranges: bytes observed, a 206 returned for bytes=0-1024), which is the
+    only partial-fetch mechanism available.
+filtering:
+  style: none
+  detail: >-
+    No query parameters are supported. A consumer wanting one state's series downloads the
+    whole master document and filters client-side on place_id / level.
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_id_tracing:
+  supported: true
+  detail: >-
+    The origin returns an x-request-id header (e.g. v-4988d264-ac98-11f1-a1b5-3f246cf25198)
+    on every response. It is a platform trace identifier, not a documented support handle —
+    FHFA does not document it or ask for it in support requests.
+versioning:
+  style: none
+  detail: >-
+    No version is carried in the path, a header, or a media type. Datasets are versioned by
+    content: each publication cycle overwrites the same URL with new data. The publication
+    calendar is the only version signal, and it is captured in
+    lifecycle/federal-housing-finance-agency-lifecycle.yml.
+  caching:
+    detail: >-
+      data.json is served cacheable (cache-control: public, last-modified present, Varnish HIT
+      observed). hpi_master.json is served cache-control: must-revalidate, no-cache, private
+      and carries NO last-modified or ETag, so a consumer cannot cheaply detect that a new
+      release has landed — it must re-download 60 MB to find out.
+error_envelope:
+  style: html
+  detail: >-
+    Unknown paths return a themed Drupal HTML 404 page (~75 KB, text/html) rather than a
+    machine-readable error body. There is no RFC 9457 problem+json envelope and no error code
+    registry.
+rate_limit_signaling:
+  headers_observed: []
+  detail: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header was present on any observed response.
+    FHFA's API Terms of Service reserves the right to limit access — "Your use of FHFA's API
+    may be subject to certain limitations on access, calls, or use" — but publishes no number,
+    window or header. See rate-limits/federal-housing-finance-agency-rate-limits.yml.
+idempotency:
+  coverage: na
+  supported: false
+  mechanism: none
+  scope: []
+  detail: >-
+    NOT APPLICABLE — there is no mutating surface. Every published endpoint is an anonymous
+    HTTP GET of a static document, so there is nothing to replay and no double-fire to
+    protect against. Recorded as `na` rather than `none` so it leaves the denominator instead
+    of scoring as a missing safeguard.
+dry_run_mode:
+  supported: na
+  detail: Not applicable — read-only surface, no action to rehearse.
+reversibility:
+  applicability: na
+  grade: na
+  detail: >-
+    NOT APPLICABLE — the FHFA public data surface exposes no write, no create, no delete and
+    no state-changing operation of any kind. An agent calling it cannot do anything that would
+    need taking back. No reversal operation is claimed and no window is asserted, because
+    neither exists and neither is needed.
+  write_surfaces: []
+cross_links:
+  errors: null
+  lifecycle: lifecycle/federal-housing-finance-agency-lifecycle.yml
+  authentication: authentication/federal-housing-finance-agency-authentication.yml
+  rate_limits: rate-limits/federal-housing-finance-agency-rate-limits.yml
+  conformance: conformance/federal-housing-finance-agency-conformance.yml
