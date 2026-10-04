@@ -31,6 +31,15 @@ tags:
 - House Price Index
 - Mortgage
 - Government
+- Government-Sponsored Enterprise
+- Fannie Mae
+- Freddie Mac
+- Federal
+tags_raw:
+- Housing Finance
+- House Price Index
+- Mortgage
+- Government
 - GSE
 - Fannie Mae
 - Freddie Mac
@@ -84,6 +93,13 @@ apis:
 - aid: fhfa:fhfa-public-use-database-api
   name: FHFA Enterprise Public Use Database (PUDB) API
   tags:
+  - Fannie Mae
+  - Freddie Mac
+  - Government-Sponsored Enterprise
+  - Mortgage
+  - Public Use Database
+  - CSV
+  tags_raw:
   - Fannie Mae
   - Freddie Mac
   - GSE
