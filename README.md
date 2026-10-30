@@ -1,4 +1,4 @@
-# Federal Housing Finance Agency (FHFA) (fhfa)
+# Federal Housing Finance Agency (FHFA)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,145 +66,123 @@
 
 The Federal Housing Finance Agency (FHFA) is an independent federal regulator established in 2008 that supervises Fannie Mae, Freddie Mac, and the Federal Home Loan Bank System. FHFA provides publicly accessible data APIs and datasets covering house price indexes (FHFA HPI), mortgage market surveys, conforming loan limits, National Mortgage Database (NMDB) aggregate statistics, Public Use Databases (PUDB) for Fannie Mae and Freddie Mac, Uniform Appraisal Dataset (UAD) statistics, and GSE performance and duty-to-serve data. Data is available in CSV, JSON, XML, and Excel formats with open public access under FHFA's API Terms of Service.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fhfa/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fhfa/refs/heads/main/apis.yml)
+**Areas:** Housing Finance · House Price Index · Mortgage · Government · Government-Sponsored Enterprise · Fannie Mae · Freddie Mac · Federal
 
-## Scope
+## Federal Housing Finance Agency (FHFA) on APIs.io
 
-- **Type:** Index
+Everything profiled for Federal Housing Finance Agency (FHFA) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fhfa/](https://apis.io/providers/fhfa/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Housing Finance
-- House Price Index
-- Mortgage
-- Government
-- GSE
-- Fannie Mae
-- Freddie Mac
-- Federal
+- [FHFA House Price Index (HPI) API](https://apis.io/apis/fhfa/fhfa-house-price-index-api/) — The FHFA House Price Index (HPI) is a comprehensive, publicly available dataset measuring changes in single-family home values across all 50 states and over…
+- [FHFA National Mortgage Database (NMDB) API](https://apis.io/apis/fhfa/fhfa-national-mortgage-database-api/) — The National Mortgage Database (NMDB) is a nationally representative, longitudinal database of residential mortgages providing aggregate statistics on…
+- [FHFA Enterprise Public Use Database (PUDB) API](https://apis.io/apis/fhfa/fhfa-public-use-database-api/) — The FHFA Enterprise Public Use Database (PUDB) provides loan-level data on single-family and multifamily mortgages acquired by Fannie Mae and Freddie Mac,…
+- [FHFA Conforming Loan Limits API](https://apis.io/apis/fhfa/fhfa-conforming-loan-limits-api/) — FHFA publishes annual conforming loan limit (CLL) values establishing the maximum mortgage amounts that Fannie Mae and Freddie Mac may purchase. Data is…
+- [FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics API](https://apis.io/apis/fhfa/fhfa-uad-aggregate-statistics-api/) — The FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics provide data on residential appraisals submitted to Fannie Mae and Freddie Mac, covering…
+- [Federal Housing Finance Agency Data Catalog](https://apis.io/apis/fhfa/federal-housing-finance-agency/) — FHFA's agency data catalog, published as a Project Open Data v1.1 (DCAT-US) JSON-LD document at https://www.fhfa.gov/data/data.json. 39 datasets and 50…
+- [FHFA House Price Index Data](https://apis.io/apis/fhfa/house-price-index/) — The FHFA House Price Index distributed as bulk files over anonymous HTTPS GET. The master series at…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### JSON Schema (1)
 
-### FHFA House Price Index (HPI) API
+The data models the API reads and writes.
 
-The FHFA House Price Index (HPI) is a comprehensive, publicly available dataset measuring changes in single-family home values across all 50 states and over 400 American cities, with data extending back to the mid-1970s. The HPI uses a weighted repeat-sales methodology based on tens of millions of home sales and is available in CSV, JSON, and XML formats at monthly and quarterly intervals. Datasets include purchase-only indexes, all-transaction indexes incorporating appraisal data, expanded-data indexes adding FHA and county recorder data, and volatility parameters. Data is free and publicly accessible with attribution required under FHFA API Terms of Service.
+- [FHFA House Price Index — hpi_master record](https://apis.io/schemas/fhfa/fhfa-hpi-master/)
 
-- **Human URL:** [https://www.fhfa.gov/data/hpi](https://www.fhfa.gov/data/hpi)
+#### JSON-LD (1)
 
-#### Tags
+Linked-data contexts for the provider's vocabulary.
 
-- House Price Index
-- Housing
-- CSV
-- JSON
-- XML
+- [Fhfa Context](https://apis.io/jsonld/fhfa/fhfa-context/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://www.fhfa.gov/data/hpi)
-- [Datasets](https://www.fhfa.gov/data/hpi/datasets)
-- [Data Download C S V](https://www.fhfa.gov/hpi/download/monthly/hpi_master.csv)
-- [Data Download X M L](https://www.fhfa.gov/hpi/download/monthly/hpi_master.xml)
-- [Data Dictionary](https://www.fhfa.gov/sites/default/files/2023-09/HPI_dictionary.xls)
-- [Summary Tables](https://www.fhfa.gov/data/hpi/summary-tables)
-- [Calculator](https://www.fhfa.gov/hpi-calculator)
+Authentication, trust centre, and vulnerability disclosure.
 
-### FHFA National Mortgage Database (NMDB) API
+- [Fhfa Domain Security](https://apis.io/security/fhfa/fhfa-domain-security/)
+- [Fhfa Vulnerability Disclosure](https://apis.io/security/fhfa/fhfa-vulnerability-disclosure/)
 
-The National Mortgage Database (NMDB) is a nationally representative, longitudinal database of residential mortgages providing aggregate statistics on outstanding residential mortgages and mortgage originations. Data covers loan characteristics, borrower demographics, and geographic distributions. NMDB aggregate statistics and National Survey of Mortgage Originations (NSMO) data are downloadable as CSV files with interactive Tableau dashboards for visualization.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://www.fhfa.gov/data/nmdb](https://www.fhfa.gov/data/nmdb)
+Published plans, tiers and prices.
 
-#### Tags
+- [Fhfa Plans Pricing](https://apis.io/plans/fhfa/fhfa-plans-pricing/)
 
-- Mortgage
-- National Mortgage Database
-- Statistics
-- CSV
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://www.fhfa.gov/data/nmdb)
-- [Related Dataset](https://www.fhfa.gov/data/nsmo)
-- [Dashboard](https://www.fhfa.gov/data/dashboard/nmdb-outstanding-residential-mortgage-statistics)
+- [Fhfa Rate Limits](https://apis.io/rate-limits/fhfa/fhfa-rate-limits/)
 
-### FHFA Enterprise Public Use Database (PUDB) API
+#### FinOps (1)
 
-The FHFA Enterprise Public Use Database (PUDB) provides loan-level data on single-family and multifamily mortgages acquired by Fannie Mae and Freddie Mac, as well as data on Federal Home Loan Bank member institutions. Files include National File A, B, and C for single-family mortgages and property-level and unit-class-level files for multifamily. Data is downloadable as zipped CSV files with accompanying data dictionaries.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://www.fhfa.gov/data/pudb](https://www.fhfa.gov/data/pudb)
+- [Fhfa Finops](https://apis.io/finops/fhfa/fhfa-finops/)
 
-#### Tags
+## Where to find this API
 
-- Fannie Mae
-- Freddie Mac
-- GSE
-- Mortgage
-- Public Use Database
-- CSV
-
-#### Properties
-
-- [Documentation](https://www.fhfa.gov/data/pudb)
-- [Overview](https://www.fhfa.gov/data/public-use-database)
-
-### FHFA Conforming Loan Limits API
-
-FHFA publishes annual conforming loan limit (CLL) values establishing the maximum mortgage amounts that Fannie Mae and Freddie Mac may purchase. Data is available at the county level for all U.S. states and territories, downloadable in XLSX, CSV, and PDF formats. Limits are adjusted annually per the Housing and Economic Recovery Act (HERA) formula, with higher limits for designated high-cost areas.
-
-- **Human URL:** [https://www.fhfa.gov/data/conforming-loan-limit](https://www.fhfa.gov/data/conforming-loan-limit)
-
-#### Tags
-
-- Conforming Loan Limits
-- Fannie Mae
-- Freddie Mac
-- Mortgage
-- CSV
-
-#### Properties
-
-- [Documentation](https://www.fhfa.gov/data/conforming-loan-limit)
-
-### FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics API
-
-The FHFA Uniform Appraisal Dataset (UAD) Aggregate Statistics provide data on residential appraisals submitted to Fannie Mae and Freddie Mac, covering appraisal values, property characteristics, and geographic distributions. An Appraisal-Level Public Use File (PUF) with anonymized individual appraisal records is also available for research.
-
-- **Human URL:** [https://www.fhfa.gov/data/uad](https://www.fhfa.gov/data/uad)
-
-#### Tags
-
-- Appraisal
-- UAD
-- Housing
-- Statistics
-
-#### Properties
-
-- [Documentation](https://www.fhfa.gov/data/uad)
-- [Public Use File](https://www.fhfa.gov/data/uad/puf)
-- [Dashboard](https://www.fhfa.gov/data/dashboard)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.fhfa.gov)
 - [Documentation](https://www.fhfa.gov/data/developer-information)
-- [Terms of Service](https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service)
-- [Datasets](https://www.fhfa.gov/data/datasets)
+- [Support](https://www.fhfa.gov/contact/data-and-research)
 - [Blog](https://www.fhfa.gov/news)
-- [LinkedIn](https://www.linkedin.com/company/fhfa)
-- [X (Twitter)](https://x.com/FHFA)
-- [Git Hub Org](https://github.com/fhfa)
-- [Plans](plans/fhfa-plans-pricing.yml)
-- [Rate Limits](rate-limits/fhfa-rate-limits.yml)
-- [Fin Ops](finops/fhfa-finops.yml)
+- [Terms of service](https://www.fhfa.gov/about/fhfa-policies/api-terms-of-service)
+- [Privacy policy](https://www.fhfa.gov/about/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 23.2 |
+| Contract governance | 18.2 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 26.3 |
+
+**Agent readiness 1.9** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fhfa/](https://apis.io/providers/fhfa/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Federal Housing Finance Agency (FHFA): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fhfa/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
